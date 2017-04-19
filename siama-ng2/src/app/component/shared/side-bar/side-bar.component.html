@@ -1,0 +1,30 @@
+﻿<div id="button-section" class="row">
+  <button id="edit-btn" type="button" class="btn btn-default btn-lg pull-right" (click)="toggleIsOpen()" [hidden]="!isOpen">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+  </button>
+</div>
+<div class="row side-bar-container">
+  <accordion [closeOthers]="true">
+    <accordion-group heading="Dashboard">
+      <ul>
+        <li><a class="nav-link" routerLink="dashboard">Dashboard 1.1</a></li>
+      </ul>
+    </accordion-group>
+    <accordion-group heading="Report">
+      <ul>
+        <li><a class="nav-link" routerLink="report/1">InspectionReport 2.1</a></li>
+        <li><a class="nav-link" routerLink="bridgehealth">Bridge Health 2.2</a></li>
+      </ul>
+    </accordion-group>
+    <accordion-group heading="Network">
+      <ul>
+        <li><a class="nav-link" routerLink="network">Network 3.1</a></li>
+      </ul>
+    </accordion-group>
+    <accordion-group heading="Settings">
+      <ul>
+        <li><a class="nav-link" routerLink="settings">Settings 4.1</a></li>
+      </ul>
+    </accordion-group>
+  </accordion>
+</div>

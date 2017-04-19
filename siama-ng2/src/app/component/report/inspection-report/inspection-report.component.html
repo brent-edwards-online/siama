@@ -1,0 +1,87 @@
+﻿<div id="report-container">
+  <h1>Inspection Report</h1>
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm" class="form-inline">
+
+    <div class="container">
+      <div class="row pull-right">
+        <button id="edit-btn" type="button" class="btn btn-default btn-lg" (click)="setEditMode(true)" [disabled]="isEditing">
+          Edit <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="form-group col-lg-4 col-md-6 col-sm-12">
+          <label for="inspectionno">Inspection No:</label>
+          <input type="text" class="form-control" id="inspectionno" [(ngModel)]="inspection.inspectionNo" name="inspectionno" #inspectionnocontrol="ngModel" [disabled]="!isEditing">
+          <div *ngIf="!inspectionnocontrol.valid && (inspectionnocontrol.dirty || inspectionnocontrol.touched)" class="alert alert-danger">
+            <div [hidden]="!inspectionnocontrol.errors.required">Inspection No is required</div>
+          </div>
+        </div>
+
+        <div class="form-group col-lg-4 col-md-6 col-sm-12">
+          <label for="inspectionno">Inspection Date:</label>
+
+          <div class="input-group date">
+            <input type="text" class="form-control" id="inspectiondate" [(ngModel)]="inspection.inspectionDate" name="inspectiondate" required #inspectiondatecontrol="ngModel" [disabled]="!isEditing">
+            <span class="input-group-addon">
+              <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+          </div>
+
+          <div *ngIf="!inspectiondatecontrol.valid && (inspectiondatecontrol.dirty || inspectiondatecontrol.touched)" class="alert alert-danger">
+            <div [hidden]="!inspectiondatecontrol.errors.required">Inspection Date is required</div>
+          </div>
+        </div>
+
+        <div class="form-group col-lg-4 col-md-6 col-sm-12">
+          <label for="inspectionno">Structure No:</label>
+          <input type="text" class="form-control" id="structureno" [(ngModel)]="inspection.structureNo" name="structureno" required #structurenumbercontrol="ngModel" [disabled]="!isEditing">
+          <div *ngIf="!structurenumbercontrol.valid && (structurenumbercontrol.dirty || structurenumbercontrol.touched)" class="alert alert-danger">
+            <div [hidden]="!structurenumbercontrol.errors.required">Structure No is required</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="form-group col-lg-4 col-md-6 col-sm-12">
+          <label for="decktype">Deck Type:</label>
+          <input type="text" class="form-control" id="decktype" [(ngModel)]="inspection.deckType" name="decktype" required #decktypecontrol="ngModel" [disabled]="!isEditing">
+
+          <select class="selectpicker">
+            <option>Mustard</option>
+            <option>Ketchup</option>
+            <option>Relish</option>
+          </select>
+
+
+
+          <div *ngIf="!decktypecontrol.valid && (decktypecontrol.dirty || decktypecontrol.touched)" class="alert alert-danger">
+            <div [hidden]="!decktypecontrol.errors.required">Deck type is required</div>
+          </div>
+        </div>
+
+        <div class="form-group col-lg-4 col-md-6 col-sm-12">
+          <label for="maintenancerequired">Maintenance Req:</label>
+          <input type="text" class="form-control" id="maintenancerequired" [(ngModel)]="inspection.isMantenanceRequired" name="maintenancerequired" #maintenancerequiredcontrol="ngModel" [disabled]="!isEditing" />
+        </div>
+
+        <div class="form-group col-lg-4 col-md-6 col-sm-12">
+          <label for="highwaybridge">HighWay Bridge:</label>
+          <input type="checkbox" class="form-control" id="highwaybridge" [(ngModel)]="inspection.isHighwayBridge" name="highwaybridge" #highwaybridgecontrol="ngModel" [disabled]="!isEditing">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-push-8 col-md-4" [hidden]="!isEditing">
+          <button class="btn btn-primary" [disabled]="true">Clear</button>
+          <button class="btn btn-primary" [disabled]="true">Delete</button>
+          <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Submit</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

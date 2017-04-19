@@ -1,0 +1,34 @@
+﻿#report-container {
+  border: solid 1px #000;
+  width: 100%;
+  height: 400px;
+  background-color:grey;
+  padding: 20px;
+  margin-top: 50px;
+}
+
+#edit-btn {
+  border: none;
+  background-color: none;
+}
+
+h1 {
+  background-color: #fff;
+  padding: 5px;
+  position: relative;
+  top: -40px;
+  display: inline;
+}
+
+form {
+  margin-top:0px;
+  background-color: aqua;
+}
+
+div.row {
+  margin-bottom: 20px;
+}
+
+label {
+  width:120px;
+}
