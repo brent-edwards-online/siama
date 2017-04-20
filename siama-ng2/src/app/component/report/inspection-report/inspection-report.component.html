@@ -14,11 +14,17 @@
       <div class="row">
         <div class="form-group col-lg-4 col-md-6 col-sm-12">
           <label for="inspectionno">Inspection No:</label>
-          <input type="text" class="form-control" id="inspectionno" [(ngModel)]="inspection.inspectionNo" name="inspectionno" #inspectionnocontrol="ngModel" [disabled]="!isEditing">
+          <input type="text" class="form-control" id="inspectionno" [(ngModel)]="inspection.inspectionNo" name="inspectionno" #inspectionnocontrol="ngModel" [disabled]="!isEditing"
+          required
+          pattern="^[A-Z0-9]{6,}$"
+          >
           <div *ngIf="!inspectionnocontrol.valid && (inspectionnocontrol.dirty || inspectionnocontrol.touched)" class="alert alert-danger">
             <div [hidden]="!inspectionnocontrol.errors.required">Inspection No is required</div>
+            <div [hidden]="!inspectionnocontrol.errors.pattern">Inspection No should be 6 alpha-numeric characters (Uppercase only)</div>
           </div>
         </div>
+        
+        minlength
 
         <div class="form-group col-lg-4 col-md-6 col-sm-12">
           <label for="inspectionno">Inspection Date:</label>
@@ -51,27 +57,19 @@
           <label for="decktype">Deck Type:</label>
           <input type="text" class="form-control" id="decktype" [(ngModel)]="inspection.deckType" name="decktype" required #decktypecontrol="ngModel" [disabled]="!isEditing">
 
-          <select class="selectpicker">
-            <option>Mustard</option>
-            <option>Ketchup</option>
-            <option>Relish</option>
-          </select>
-
-
-
           <div *ngIf="!decktypecontrol.valid && (decktypecontrol.dirty || decktypecontrol.touched)" class="alert alert-danger">
             <div [hidden]="!decktypecontrol.errors.required">Deck type is required</div>
           </div>
         </div>
 
         <div class="form-group col-lg-4 col-md-6 col-sm-12">
-          <label for="maintenancerequired">Maintenance Req:</label>
-          <input type="text" class="form-control" id="maintenancerequired" [(ngModel)]="inspection.isMantenanceRequired" name="maintenancerequired" #maintenancerequiredcontrol="ngModel" [disabled]="!isEditing" />
+          <label for="ismaintenancerequired">Maintenance Req:</label>
+          <input type="text" class="form-control" id="ismaintenancerequired" [(ngModel)]="inspection.isMaintenanceRequired" name="ismaintenancerequired" #maintenancerequiredcontrol="ngModel" [disabled]="!isEditing" />
         </div>
 
         <div class="form-group col-lg-4 col-md-6 col-sm-12">
-          <label for="highwaybridge">HighWay Bridge:</label>
-          <input type="checkbox" class="form-control" id="highwaybridge" [(ngModel)]="inspection.isHighwayBridge" name="highwaybridge" #highwaybridgecontrol="ngModel" [disabled]="!isEditing">
+          <label for="ishighwaybridge">HighWay Bridge:</label>
+          <input type="checkbox" class="form-control" id="ishighwaybridge" [(ngModel)]="inspection.isHighwayBridge" name="ishighwaybridge" #highwaybridgecontrol="ngModel" [disabled]="!isEditing">
         </div>
       </div>
 
@@ -82,6 +80,16 @@
           <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Submit</button>
         </div>
       </div>
+
+      <div class="row">
+        <div *ngIf="errorMessage" class="alert alert-danger" style="margin-top: 5px;">
+          <div>{{errorMessage}}</div>
+        </div>
+        <div *ngIf="successMessage" class="alert alert-success" style="margin-top: 5px;">
+          <div>{{successMessage}}</div>
+        </div>
+      </div>
+
     </div>
   </form>
 </div>

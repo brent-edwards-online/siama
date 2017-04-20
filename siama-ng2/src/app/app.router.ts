@@ -15,7 +15,7 @@ export const router: Routes = [
     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
     { path: 'dashboard', component: DashboardComponent },
     { path: 'report', component: ReportComponent },
-    { path: 'report/:id', component: InspectionReportComponent },
+    { path: 'report/:inspectionNo', component: InspectionReportComponent },
     { path: 'bridgehealth', component: BridgeHealthComponent },
     { path: 'network', component: NetworkComponent },
     { path: 'settings', component: SettingsComponent }

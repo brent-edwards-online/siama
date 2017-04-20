@@ -1,0 +1,9 @@
+D:\Development\Git-Repository\siama\siama_api\siama_api\bin\Debug\netcoreapp1.1\siama_api.deps.json
+D:\Development\Git-Repository\siama\siama_api\siama_api\bin\Debug\netcoreapp1.1\siama_api.runtimeconfig.json
+D:\Development\Git-Repository\siama\siama_api\siama_api\bin\Debug\netcoreapp1.1\siama_api.runtimeconfig.dev.json
+D:\Development\Git-Repository\siama\siama_api\siama_api\obj\Debug\netcoreapp1.1\siama_api.csprojResolveAssemblyReference.cache
+D:\Development\Git-Repository\siama\siama_api\siama_api\obj\Debug\netcoreapp1.1\siama_api.AssemblyInfo.cs
+D:\Development\Git-Repository\siama\siama_api\siama_api\bin\Debug\netcoreapp1.1\siama_api.dll
+D:\Development\Git-Repository\siama\siama_api\siama_api\bin\Debug\netcoreapp1.1\siama_api.pdb
+D:\Development\Git-Repository\siama\siama_api\siama_api\obj\Debug\netcoreapp1.1\siama_api.dll
+D:\Development\Git-Repository\siama\siama_api\siama_api\obj\Debug\netcoreapp1.1\siama_api.pdb
