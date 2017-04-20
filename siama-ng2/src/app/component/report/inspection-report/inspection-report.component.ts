@@ -2,7 +2,9 @@
 import { Inspection } from '../../../model/inspection.model';
 import { InspectionReportService } from '../../../service/inspection-report.service';
 import { ActivatedRoute } from '@angular/router';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+
+declare var $: any; // For JQuery
 
 @Component({
     selector: 'app-inspection-report',
@@ -11,11 +13,12 @@ import { NgForm } from '@angular/forms';
     providers: [InspectionReportService]
 })
 export class InspectionReportComponent implements OnInit {
-    private inspection: Inspection = new Inspection();
+    private inspection: Inspection = new Inspection("","","","","",false,false);
     private inspectionNo: string;
     private isEditing: boolean = false;
     private errorMessage: string;
     private successMessage: string;
+    private decktypes: string[] = ["Concrete", "Earth", "Sealed", "Steel", "Wood"];
 
     constructor(private inspectionReportService: InspectionReportService, private route: ActivatedRoute) {
  
@@ -27,7 +30,6 @@ export class InspectionReportComponent implements OnInit {
         this.inspectionReportService.GetInspectionReportByInspectionNo(this.inspectionNo)
             .subscribe(
             (response) => {
-                console.log(response);
                 if (response.result) {
                     this.inspection = response.result;
                 }
@@ -36,7 +38,6 @@ export class InspectionReportComponent implements OnInit {
                 }
             },
             (error) => {
-                console.log(error);
                 this.errorMessage = "Could not load - " + this.inspectionNo;
             });
 
@@ -46,17 +47,15 @@ export class InspectionReportComponent implements OnInit {
         this.isEditing = isEditing;
     }
 
-    onSubmit(form: NgForm) {
+    public onSubmit() {
         this.errorMessage = '';
         this.successMessage = '';
 
-        let inspection: Inspection = form.value;
-        this.inspectionReportService.SaveInspection(inspection)
+        this.inspectionReportService.SaveInspection(this.inspection)
             .subscribe(
             (response) => {
-                console.log(response);
                 if (response.result) {
-                    this.isEditing = false;   
+                    this.isEditing = false;
                     this.successMessage = "Report saved";
                 }
                 else {
@@ -64,8 +63,15 @@ export class InspectionReportComponent implements OnInit {
                 }
             },
             (error) => {
-                console.log(error);
                 this.errorMessage = "Could not save - " + this.inspectionNo;
             });
+    }
+
+    public datePicker() {
+        if (this.isEditing) {
+            $(function () {
+                $('#datepick').datetimepicker();
+            });
+        }
     }
 }

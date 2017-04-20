@@ -16,5 +16,6 @@
             base.OnModelCreating(builder);
             builder.Entity<InspectionReport>().ToTable("InspectionReports");
         }
+
     }
 }

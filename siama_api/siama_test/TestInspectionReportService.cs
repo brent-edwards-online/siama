@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace siama_test
 {
     [TestClass]
-    public class UnitTest1
+    public class TestInspectionReportService
     {
         [TestMethod]
         public void TestMethod1()

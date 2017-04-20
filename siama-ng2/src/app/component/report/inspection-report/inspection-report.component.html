@@ -1,7 +1,6 @@
 ﻿<div id="report-container">
   <h1>Inspection Report</h1>
   <form (ngSubmit)="onSubmit(f)" #f="ngForm" class="form-inline">
-
     <div class="container">
       <div class="row pull-right">
         <button id="edit-btn" type="button" class="btn btn-default btn-lg" (click)="setEditMode(true)" [disabled]="isEditing">
@@ -12,28 +11,25 @@
 
     <div class="container">
       <div class="row">
-        <div class="form-group col-lg-4 col-md-6 col-sm-12">
+        <div class="form-group col-lg-4 col-md-6 col-sm-12" >
           <label for="inspectionno">Inspection No:</label>
           <input type="text" class="form-control" id="inspectionno" [(ngModel)]="inspection.inspectionNo" name="inspectionno" #inspectionnocontrol="ngModel" [disabled]="!isEditing"
-          required
-          pattern="^[A-Z0-9]{6,}$"
-          >
+                 required
+                 pattern="^[A-Z0-9]{6,6}$">
           <div *ngIf="!inspectionnocontrol.valid && (inspectionnocontrol.dirty || inspectionnocontrol.touched)" class="alert alert-danger">
             <div [hidden]="!inspectionnocontrol.errors.required">Inspection No is required</div>
             <div [hidden]="!inspectionnocontrol.errors.pattern">Inspection No should be 6 alpha-numeric characters (Uppercase only)</div>
           </div>
         </div>
-        
-        minlength
 
         <div class="form-group col-lg-4 col-md-6 col-sm-12">
           <label for="inspectionno">Inspection Date:</label>
 
-          <div class="input-group date">
+          <div class="input-group date" id="datepick">
             <input type="text" class="form-control" id="inspectiondate" [(ngModel)]="inspection.inspectionDate" name="inspectiondate" required #inspectiondatecontrol="ngModel" [disabled]="!isEditing">
-            <span class="input-group-addon">
+            <div class="input-group-addon" (click)="datePicker()">
               <span class="glyphicon glyphicon-calendar"></span>
-            </span>
+            </div>
           </div>
 
           <div *ngIf="!inspectiondatecontrol.valid && (inspectiondatecontrol.dirty || inspectiondatecontrol.touched)" class="alert alert-danger">
@@ -42,10 +38,13 @@
         </div>
 
         <div class="form-group col-lg-4 col-md-6 col-sm-12">
-          <label for="inspectionno">Structure No:</label>
-          <input type="text" class="form-control" id="structureno" [(ngModel)]="inspection.structureNo" name="structureno" required #structurenumbercontrol="ngModel" [disabled]="!isEditing">
-          <div *ngIf="!structurenumbercontrol.valid && (structurenumbercontrol.dirty || structurenumbercontrol.touched)" class="alert alert-danger">
-            <div [hidden]="!structurenumbercontrol.errors.required">Structure No is required</div>
+          <label for="structureno">Structure No:</label>
+          <input type="text" class="form-control" id="structureno" [(ngModel)]="inspection.structureNo" name="structureno" #snc="ngModel" [disabled]="!isEditing"
+                 required
+                 pattern="^[0-9]{6,6}$">
+          <div *ngIf="!snc.valid && (!snc.pristine || snc.touched)" class="alert alert-danger">
+            <div [hidden]="!snc.errors.required">Structure No is required</div>
+            <div [hidden]="!snc.errors.pattern">Structure No should be 6 numeric characters</div>
           </div>
         </div>
       </div>
@@ -55,7 +54,12 @@
       <div class="row">
         <div class="form-group col-lg-4 col-md-6 col-sm-12">
           <label for="decktype">Deck Type:</label>
-          <input type="text" class="form-control" id="decktype" [(ngModel)]="inspection.deckType" name="decktype" required #decktypecontrol="ngModel" [disabled]="!isEditing">
+
+          <select class="form-control" id="decktype"
+                  required
+                  [(ngModel)]="inspection.deckType" name="decktype" #decktypecontrol="ngModel" [disabled]="!isEditing">
+            <option *ngFor="let d of decktypes" [value]="d">{{d}}</option>
+          </select>
 
           <div *ngIf="!decktypecontrol.valid && (decktypecontrol.dirty || decktypecontrol.touched)" class="alert alert-danger">
             <div [hidden]="!decktypecontrol.errors.required">Deck type is required</div>

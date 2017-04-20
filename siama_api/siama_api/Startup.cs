@@ -51,9 +51,10 @@
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, SiamaDbContext dbContext)
         {
-            if(env.IsDevelopment())
+            if (env.IsDevelopment())
             {
                 dbContext.Database.Migrate(); //this will generate the db if it does not exist
+
             }
 
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
