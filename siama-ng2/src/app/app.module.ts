@@ -3,10 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { DatepickerModule } from 'ngx-bootstrap/datepicker';
 import { routes } from './app.router';
-import { SwitchComponent } from 'angular2-bootstrap-switch/components';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './component/shared/header/header.component';
@@ -18,6 +16,8 @@ import { SettingsComponent } from './component/settings/settings.component';
 import { BridgeHealthComponent } from './component/bridge-health/bridge-health.component';
 import { InspectionReportComponent } from './component/report/inspection-report/inspection-report.component';
 
+import { InspectionReportService } from './service/inspection-report.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,19 +28,17 @@ import { InspectionReportComponent } from './component/report/inspection-report/
     NetworkComponent,
     SettingsComponent,
     BridgeHealthComponent,
-    InspectionReportComponent,
-    SwitchComponent
+    InspectionReportComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     AccordionModule.forRoot(),
-    BsDropdownModule.forRoot(),
-    DatepickerModule.forRoot(),
-    routes
+    routes,
+    DatepickerModule.forRoot()
   ],
-  providers: [],
+  providers: [InspectionReportService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

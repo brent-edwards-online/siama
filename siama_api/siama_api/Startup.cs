@@ -38,7 +38,7 @@
 
             // Entity Framework DbContext
             services.AddDbContext<SiamaDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("Siama")));
+                options.UseSqlServer(Configuration.GetConnectionString("SiamaOnline")));
 
             services.AddTransient<IInspectionReportService, InspectionReportService>();
             services.AddTransient<IInspectionReportRepository, InspectionReportRepository>();

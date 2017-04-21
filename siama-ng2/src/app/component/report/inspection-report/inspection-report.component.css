@@ -35,3 +35,10 @@ label {
 .alert {
   margin-top: 5px;
 }
+
+.datepicker {
+  display:block; 
+  min-height:290px;
+  position: absolute;
+  z-index: 100;
+}

@@ -7,15 +7,15 @@ import { Inspection } from '../model/inspection.model';
 
 @Injectable()
 export class InspectionReportService {
-    private readonly BASE_URL: string = "http://localhost:5000/api/report/";
+    private readonly BASE_URL: string = "http://siama-dev.ap-southeast-2.elasticbeanstalk.com/api/report/";
 
     constructor(private http: Http) { }
 
-    public GetInspectionReportByInspectionNo(inspectionNo: string) {
+    public GetInspectionReportByInspectionNo(inspectionNo: string): Observable<any> {
         return this.http.get(this.BASE_URL + inspectionNo).map((res: Response) => res.json());
     }
 
-    public SaveInspection(report: Inspection) {
+    public SaveInspection(report: Inspection): Observable<any> {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
         return this.http

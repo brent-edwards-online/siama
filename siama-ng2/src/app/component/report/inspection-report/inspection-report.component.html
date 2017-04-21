@@ -1,6 +1,6 @@
 ﻿<div id="report-container">
   <h1>Inspection Report</h1>
-  <form (ngSubmit)="onSubmit(f)" #f="ngForm" class="form-inline">
+  <form (ngSubmit)="onSubmit()" #f="ngForm" class="form-inline">
     <div class="container">
       <div class="row pull-right">
         <button id="edit-btn" type="button" class="btn btn-default btn-lg" (click)="setEditMode(true)" [disabled]="isEditing">
@@ -11,9 +11,9 @@
 
     <div class="container">
       <div class="row">
-        <div class="form-group col-lg-4 col-md-6 col-sm-12" >
+        <div class="form-group col-lg-4 col-md-6 col-sm-12">
           <label for="inspectionno">Inspection No:</label>
-          <input type="text" class="form-control" id="inspectionno" [(ngModel)]="inspection.inspectionNo" name="inspectionno" #inspectionnocontrol="ngModel" [disabled]="!isEditing"
+          <input type="text" class="form-control" id="inspectionno" [(ngModel)]="inspection.inspectionNo" name="inspectionno" #inspectionnocontrol="ngModel" [readonly]="!isEditing"
                  required
                  pattern="^[A-Z0-9]{6,6}$">
           <div *ngIf="!inspectionnocontrol.valid && (inspectionnocontrol.dirty || inspectionnocontrol.touched)" class="alert alert-danger">
@@ -23,14 +23,18 @@
         </div>
 
         <div class="form-group col-lg-4 col-md-6 col-sm-12">
-          <label for="inspectionno">Inspection Date:</label>
-
-          <div class="input-group date" id="datepick">
-            <input type="text" class="form-control" id="inspectiondate" [(ngModel)]="inspection.inspectionDate" name="inspectiondate" required #inspectiondatecontrol="ngModel" [disabled]="!isEditing">
-            <div class="input-group-addon" (click)="datePicker()">
+          <label for="inspectiondate">Inspection Date:</label>
+          
+          <div class="input-group date">
+            <input type="text" class="form-control" id="inspectiondate" [(ngModel)]="inspection.inspectionDate" name="inspectiondate" required #inspectiondatecontrol="ngModel" [readonly]="!isEditing">
+            <div class="input-group-addon"  (click)="toggleDatePicker()">
               <span class="glyphicon glyphicon-calendar"></span>
             </div>
           </div>
+          <div class="datepicker" *ngIf="displayDatePicker">
+            <datepicker name="inspectiondate" [(ngModel)]="inspection.inspectionDate" [minDate]="minDate" [showWeeks]="true" [dateDisabled]="dateDisabled"></datepicker>
+          </div>
+          
 
           <div *ngIf="!inspectiondatecontrol.valid && (inspectiondatecontrol.dirty || inspectiondatecontrol.touched)" class="alert alert-danger">
             <div [hidden]="!inspectiondatecontrol.errors.required">Inspection Date is required</div>
@@ -39,9 +43,7 @@
 
         <div class="form-group col-lg-4 col-md-6 col-sm-12">
           <label for="structureno">Structure No:</label>
-          <input type="text" class="form-control" id="structureno" [(ngModel)]="inspection.structureNo" name="structureno" #snc="ngModel" [disabled]="!isEditing"
-                 required
-                 pattern="^[0-9]{6,6}$">
+          <input type="text" class="form-control" id="structureno" [(ngModel)]="inspection.structureNo" name="structureno" #snc="ngModel" required pattern="^[0-9]{6,6}$" [readonly]="!isEditing">
           <div *ngIf="!snc.valid && (!snc.pristine || snc.touched)" class="alert alert-danger">
             <div [hidden]="!snc.errors.required">Structure No is required</div>
             <div [hidden]="!snc.errors.pattern">Structure No should be 6 numeric characters</div>
@@ -53,27 +55,46 @@
     <div class="container">
       <div class="row">
         <div class="form-group col-lg-4 col-md-6 col-sm-12">
-          <label for="decktype">Deck Type:</label>
+          
+          <div *ngIf="!isEditing">
+            <label for="decktypereadonly">Deck Type:</label>
+            <input type="text" class="form-control" id="decktypereadonly" [(ngModel)]="inspection.deckType" [readonly]="true" [ngModelOptions]="{standalone:true}">
+          </div>
+          <div *ngIf="isEditing">
+            <label for="decktype">Deck Type:</label>
+            <select class="form-control" id="decktype"
+                    required
+                    [(ngModel)]="inspection.deckType" name="decktype" #decktypecontrol="ngModel">
+              <option *ngFor="let d of decktypes" [value]="d">{{d}}</option>
+            </select>
 
-          <select class="form-control" id="decktype"
-                  required
-                  [(ngModel)]="inspection.deckType" name="decktype" #decktypecontrol="ngModel" [disabled]="!isEditing">
-            <option *ngFor="let d of decktypes" [value]="d">{{d}}</option>
-          </select>
-
-          <div *ngIf="!decktypecontrol.valid && (decktypecontrol.dirty || decktypecontrol.touched)" class="alert alert-danger">
-            <div [hidden]="!decktypecontrol.errors.required">Deck type is required</div>
+            <div *ngIf="!decktypecontrol.valid && (decktypecontrol.dirty || decktypecontrol.touched)" class="alert alert-danger">
+              <div [hidden]="!decktypecontrol.errors.required">Deck type is required</div>
+            </div>
           </div>
         </div>
 
         <div class="form-group col-lg-4 col-md-6 col-sm-12">
           <label for="ismaintenancerequired">Maintenance Req:</label>
-          <input type="text" class="form-control" id="ismaintenancerequired" [(ngModel)]="inspection.isMaintenanceRequired" name="ismaintenancerequired" #maintenancerequiredcontrol="ngModel" [disabled]="!isEditing" />
+          <input type="text" class="form-control" id="ismaintenancerequired" [(ngModel)]="inspection.isMaintenanceRequired" name="ismaintenancerequired" #maintenancerequiredcontrol="ngModel" [readonly]="!isEditing">
         </div>
 
         <div class="form-group col-lg-4 col-md-6 col-sm-12">
-          <label for="ishighwaybridge">HighWay Bridge:</label>
-          <input type="checkbox" class="form-control" id="ishighwaybridge" [(ngModel)]="inspection.isHighwayBridge" name="ishighwaybridge" #highwaybridgecontrol="ngModel" [disabled]="!isEditing">
+          <div *ngIf="!isEditing">
+            <label for="ishighwaybridgereadonly">HighWay Bridge:</label>
+            <input type="checkbox" class="form-control" id="ishighwaybridgereadonly" [(ngModel)]="inspection.isHighwayBridge" onclick="return false" [ngModelOptions]="{standalone:true}">
+          </div>
+          <div *ngIf="isEditing">
+            <label for="ishighwaybridge">HighWay Bridge:</label>
+            <input type="checkbox" class="form-control" id="ishighwaybridge" [(ngModel)]="inspection.isHighwayBridge" name="ishighwaybridge" #highwaybridgecontrol="ngModel" >
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <h3>Upload an image</h3>
+          <input type="file" class="form-control" id="image" name="image" (change)="fileSelected($event)" accept=".jpg,.png" [readonly]="!isEditing">
         </div>
       </div>
 
@@ -81,7 +102,7 @@
         <div class="col-md-push-8 col-md-4" [hidden]="!isEditing">
           <button class="btn btn-primary" [disabled]="true">Clear</button>
           <button class="btn btn-primary" [disabled]="true">Delete</button>
-          <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Submit</button>
+          <button type="submit" class="btn btn-primary" [disabled]="!f.form.valid">Submit</button>
         </div>
       </div>
 
@@ -96,4 +117,7 @@
 
     </div>
   </form>
+
+
+
 </div>
