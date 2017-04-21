@@ -4,8 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { NgForm, FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Rx';
 import { InspectionReportService } from '../../../service/inspection-report.service';
+import * as moment from 'moment';
 
-//declare var $: any; // For JQuery
 
 @Component({
     selector: 'app-inspection-report',
@@ -76,7 +76,12 @@ export class InspectionReportComponent implements OnInit {
             });
     }
 
-    toggleDatePicker() {
+    setShowDatePicker(showDatePicker: boolean) {
+        this.displayDatePicker = showDatePicker;
+    }
+
+    toggleDatePicker($event) {
+        $event.stopPropagation();
         if (this.isEditing) {
             this.displayDatePicker = !this.displayDatePicker;              
         }
