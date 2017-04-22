@@ -38,25 +38,29 @@ Run: dotnet restore
 ### 2.2:  Use existing AWS database or create local db
 
 You can either use the online AWS db I set up by keeping the current dbcontext in Startup.cs
-
+```
 services.AddDbContext<SiamaDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SiamaOnline")));
-
+```
 or 
 
 Change the dbcontext to use internal database
-
+```
 services.AddDbContext<SiamaLocal>(options => options.UseSqlServer(Configuration.GetConnectionString("SiamaOnline")));
-
+```
 You may need to edit connection string in appsettings.json
-
+```
 "SiamaLocal": "Server=(localdb)\\mssqllocaldb;Database=Siama;Trusted_Connection=True;MultipleActiveResultSets=true"
-
+```
 To create the database and seed with dummy date go to project folder 
 
-Run: dotnet ef database update
-
-Start Api: dotnet run
-
+Run: 
+```
+dotnet ef database update
+```
+Start Api: 
+```
+dotnet run
+```
 Or just open Visual Studio solution and debug the solution
 
 
@@ -74,17 +78,19 @@ private readonly BASE_URL: string = "http://siama-api.brentedwardsonline.com/api
 ### 3.2 Install NPM packages  
 
 From the angular project directory ~\siama\siama_ng2
-  
-> npm install
-  
+```  
+npm install
+```  
 ### 3.3 Run using Angular-cli
 
-  From the angular project directory ~\siama\siama_ng2
-  > ng serve
-  
+From the angular project directory ~\siama\siama_ng2
+```
+ng serve
+```  
 ### 3.4 Open browser
-  http://localhost:4200
-
+```  
+http://localhost:4200
+```
 # Run Instructions
 
 ## 1: Angular-Cli should start the application at: https://localhost:4200
