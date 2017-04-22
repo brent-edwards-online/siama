@@ -5,6 +5,7 @@
 
     public interface IInspectionReportService
     {
+        IEnumerable<InspectionReport> GetAllInspectionReports();
         IEnumerable<InspectionReport> GetInspectionReportByInspectionNo(string inspectionNo);
         void UpdateInspectionReport(InspectionReport report);
     }

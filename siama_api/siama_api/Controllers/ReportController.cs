@@ -15,10 +15,26 @@
             _inspectionReportService = inspectionReportService;
         }
 
-        [HttpGet("{inspectionNo}")]
+        [HttpGet("{inspectionNo?}")]
         public IActionResult Get(string inspectionNo)
         {
-            return new JsonResult( new { Result = _inspectionReportService.GetInspectionReportByInspectionNo(inspectionNo).FirstOrDefault() } );
+            try
+            {
+                if (inspectionNo == null)
+                {
+                    return new JsonResult(new { Result = _inspectionReportService.GetAllInspectionReports() });
+                }
+                else
+                {
+                    return new JsonResult(new { Result = _inspectionReportService.GetInspectionReportByInspectionNo(inspectionNo).FirstOrDefault() });
+                }
+            }
+            catch
+            {
+                return BadRequest(new { ErrorMessage = "Could not get inspection reports" });
+            }
+
+
         }
 
         [HttpPut]

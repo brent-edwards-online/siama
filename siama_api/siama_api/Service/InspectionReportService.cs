@@ -17,6 +17,11 @@
             this._unitOfWork = unitOfWork;
         }
 
+        public IEnumerable<InspectionReport> GetAllInspectionReports()
+        {
+            return _inspectionReportRepository.GetAll();
+        }
+
         public IEnumerable<InspectionReport> GetInspectionReportByInspectionNo(string inspectionNo)
         {
             return _inspectionReportRepository.GetAll().Where(i => i.InspectionNo == inspectionNo);
@@ -26,6 +31,7 @@
         {
             _inspectionReportRepository.Update(report);
             _unitOfWork.SaveChanges();
+            
         }
     }
 }

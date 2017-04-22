@@ -2,10 +2,10 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { UiSwitchModule } from 'angular2-ui-switch/src/index';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { DatepickerModule } from 'ngx-bootstrap/datepicker';
 import { routes } from './app.router';
-import { UiSwitchModule } from 'angular2-ui-switch'
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './component/shared/header/header.component';
