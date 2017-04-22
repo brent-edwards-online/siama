@@ -109,15 +109,15 @@ http://localhost:4200
 
 or if online
 
-  https://siama.brentedwardsonline.com/report/11111A
+  http://siama.brentedwardsonline.com/report/11111A
   
-  https://siama.brentedwardsonline.com/report/11111B
+  http://siama.brentedwardsonline.com/report/11111B
   
-  https://siama.brentedwardsonline.com/report/12345C
+  http://siama.brentedwardsonline.com/report/12345C
   
-  https://siama.brentedwardsonline.com/report/222222
+  http://siama.brentedwardsonline.com/report/222222
   
-  https://siama.brentedwardsonline.com0/report/ABCDEF
+  http://siama.brentedwardsonline.com0/report/ABCDEF
 
 
 # Common problems
