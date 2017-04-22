@@ -7,3 +7,4 @@ siama_api/siama_api/obj/
 siama_api/siama_api/bin/
 siama_api/siama_test/bin/Debug/netcoreapp1.1/siama_api.dll
 siama_api/siama_test/bin/Debug/netcoreapp1.1/siama_api.pdb
+siama_api/siama_test/bin/
