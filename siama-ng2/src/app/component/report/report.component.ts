@@ -4,7 +4,7 @@ import { NgForm, FormGroup, FormBuilder, FormControl, Validators } from '@angula
 import { Observable } from 'rxjs/Rx';
 import { InspectionReportService } from '../../service/inspection-report.service';
 import * as moment from 'moment';
-
+import { RouterModule } from '@angular/router'; 
 
 @Component({
   selector: 'app-report',

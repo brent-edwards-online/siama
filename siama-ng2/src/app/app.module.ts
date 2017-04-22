@@ -6,6 +6,7 @@ import { UiSwitchModule } from 'angular2-ui-switch/src/index';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { DatepickerModule } from 'ngx-bootstrap/datepicker';
 import { routes } from './app.router';
+import { RouterModule } from '@angular/router'; 
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './component/shared/header/header.component';
@@ -38,7 +39,8 @@ import { InspectionReportService } from './service/inspection-report.service';
     AccordionModule.forRoot(),
     routes,
     DatepickerModule.forRoot(),
-    UiSwitchModule
+    UiSwitchModule,
+    RouterModule
   ],
   providers: [InspectionReportService],
   bootstrap: [AppComponent]

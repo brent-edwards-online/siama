@@ -12,16 +12,11 @@
     <div class="container">
       <div class="row">
         <div class="form-group col-lg-4 col-md-6 col-sm-12">
+          <!--Just make this read only -->
           <label for="inspectionno">Inspection No:</label>
           <input type="text" class="form-control" id="inspectionno" [(ngModel)]="inspection.inspectionNo" name="inspectionno" #inspectionnocontrol="ngModel" [readonly]="true"
                  required
                  pattern="^[A-Z0-9]{6,6}$">
-          <!-- Inspection is readonly 
-          <div *ngIf="!inspectionnocontrol.valid && (inspectionnocontrol.dirty || inspectionnocontrol.touched)" class="alert alert-danger">
-            <div [hidden]="!inspectionnocontrol.errors.required">Inspection No is required</div>
-            <div [hidden]="!inspectionnocontrol.errors.pattern">Inspection No should be 6 alpha-numeric characters (Uppercase only)</div>
-          </div>
-          -->
         </div>
 
         <div class="form-group col-lg-4 col-md-6 col-sm-12">
@@ -34,7 +29,7 @@
             </div>
           </div>
           <div class="datepicker" *ngIf="displayDatePicker">
-            <datepicker name="inspectiondate" [(ngModel)]="inspection.inspectionDate" [minDate]="minDate" [showWeeks]="true" (click)="$event.stopPropagation()"></datepicker>
+            <datepicker name="inspectiondatepicker" [(ngModel)]="inspection.inspectionDate" [showWeeks]="true" (click)="$event.stopPropagation()"></datepicker>
           </div>
 
 

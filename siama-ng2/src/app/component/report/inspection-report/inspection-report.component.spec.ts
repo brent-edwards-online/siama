@@ -2,13 +2,16 @@
 
 import { InspectionReportComponent } from './inspection-report.component';
 
+import { FormsModule } from '@angular/forms';
+
 describe('InspectionReportComponent', () => {
   let component: InspectionReportComponent;
   let fixture: ComponentFixture<InspectionReportComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ InspectionReportComponent ]
+      TestBed.configureTestingModule({
+        imports: [FormsModule],
+        declarations: [ InspectionReportComponent ]
     })
     .compileComponents();
   }));
