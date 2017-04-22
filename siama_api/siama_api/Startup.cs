@@ -58,7 +58,6 @@
             }
 
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
 
             app.UseCors("CorsPolicy");
 

@@ -1,3 +1,7 @@
 siama-ng2/dist/
 siama-ng2/node_modules/
 siama-ng2/.vs/
+siama_api/.vs/
+siama_api/siama_test/obj/
+siama_api/siama_api/obj/
+siama_api/siama_api/bin/
