@@ -67,14 +67,14 @@ Or just open Visual Studio solution and debug the solution
 ## 3 Build Angular2 Web Site:
 
 ### 3.1 Edit InspectionReportService.ts to choose if access a local api endpoint or just use the AWS online version
-
+```
 // Online Api endpoint
   
 private readonly BASE_URL: string = "http://siama-api.brentedwardsonline.com/api/report/";
 
 // Local api enpoint if required
 /*private readonly BASE_URL: string = "http://localhost:5000/api/report/";*/
-
+```
 ### 3.2 Install NPM packages  
 
 From the angular project directory ~\siama\siama_ng2
@@ -96,10 +96,15 @@ http://localhost:4200
 ## 1: Angular-Cli should start the application at: https://localhost:4200
 ## 2: Navigate to https://localhost:4200/report for a list of inspection reports
 ## 3: Use the links on the reports page to go to inspection reports or use the following routes
+  
   https://localhost:4200/report/11111A
+  
   https://localhost:4200/report/11111B
+  
   https://localhost:4200/report/12345C
+  
   https://localhost:4200/report/222222
+  
   https://localhost:4200/report/ABCDEF
 
 
