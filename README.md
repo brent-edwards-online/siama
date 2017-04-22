@@ -107,6 +107,18 @@ http://localhost:4200
   
   https://localhost:4200/report/ABCDEF
 
+or if online
+
+  https://siama.brentedwardsonline.com/report/11111A
+  
+  https://siama.brentedwardsonline.com/report/11111B
+  
+  https://siama.brentedwardsonline.com/report/12345C
+  
+  https://siama.brentedwardsonline.com/report/222222
+  
+  https://siama.brentedwardsonline.com0/report/ABCDEF
+
 
 # Common problems
 
