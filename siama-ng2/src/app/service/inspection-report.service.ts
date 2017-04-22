@@ -8,8 +8,8 @@ import { Inspection } from '../model/inspection.model';
 @Injectable()
 export class InspectionReportService {
     
-    /*private readonly BASE_URL: string = "http://siama-api.brentedwardsonline.com/api/report/";*/
-    private readonly BASE_URL: string = "http://localhost:5000/api/report/";
+    // Online Api endpoint
+    private readonly BASE_URL: string = "http://siama-api.brentedwardsonline.com/api/report/";
 
     constructor(private http: Http) { }
 
