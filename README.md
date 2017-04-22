@@ -26,16 +26,16 @@ Body is an inspection report Json object
 
 # Build Instructions
 
-##1:  Clone Repository
+## 1:  Clone Repository
 > git clone https://github.com/brent-edwards-online/siama.git
 
-##2:  Build Api:
+## 2:  Build Api:
 
-###2.1:  From the project directory ~\siama\siama_api\siama_api
+### 2.1:  From the project directory ~\siama\siama_api\siama_api
 
 Run: dotnet restore
 
-###2.2:  Use existing AWS database or create local db
+### 2.2:  Use existing AWS database or create local db
 
 You can either use the online AWS db I set up by keeping the current dbcontext in Startup.cs
 
@@ -60,9 +60,9 @@ Start Api: dotnet run
 Or just open Visual Studio solution and debug the solution
 
 
-##3 Build Angular2 Web Site:
+## 3 Build Angular2 Web Site:
 
-###3.1 Edit InspectionReportService.ts to choose if access a local api endpoint or just use the AWS online version
+### 3.1 Edit InspectionReportService.ts to choose if access a local api endpoint or just use the AWS online version
 
 // Online Api endpoint
   
@@ -71,25 +71,25 @@ private readonly BASE_URL: string = "http://siama-api.brentedwardsonline.com/api
 // Local api enpoint if required
 /*private readonly BASE_URL: string = "http://localhost:5000/api/report/";*/
 
-###3.2 Install NPM packages  
+### 3.2 Install NPM packages  
 
 From the angular project directory ~\siama\siama_ng2
   
 > npm install
   
-###3.3 Run using Angular-cli
+### 3.3 Run using Angular-cli
 
   From the angular project directory ~\siama\siama_ng2
   > ng serve
   
-###3.4 Open browser
+### 3.4 Open browser
   http://localhost:4200
 
 # Run Instructions
 
-##1: Angular-Cli should start the application at: https://localhost:4200
-##2: Navigate to https://localhost:4200/report for a list of inspection reports
-##3: Use the links on the reports page to go to inspection reports or use the following routes
+## 1: Angular-Cli should start the application at: https://localhost:4200
+## 2: Navigate to https://localhost:4200/report for a list of inspection reports
+## 3: Use the links on the reports page to go to inspection reports or use the following routes
   https://localhost:4200/report/11111A
   https://localhost:4200/report/11111B
   https://localhost:4200/report/12345C
