@@ -4,7 +4,7 @@
   min-height: 600px;
   padding: 20px;
   margin-top: 50px;
-  min-width: 400px;
+  min-width: 500px;
 }
 
 div.container {
@@ -48,4 +48,10 @@ label {
   min-height:290px;
   position: absolute;
   z-index: 100;
+}
+
+.button-row {
+  width:80px;
+  margin-right:auto;
+  margin-left:auto;
 }
