@@ -29,6 +29,8 @@ Body is an inspection report Json object
 
 POST api/uploadfile/inspectionNo
 
+Uploads a file to AWS S3 bucket
+
 Body is IFormFile
 
 Files are uploaded to API and then saved to AWS S3 data storage. 
