@@ -23,6 +23,10 @@ describe('ReportComponent', () => {
     fixture.detectChanges();
   });
 
+  it('should create', () => {
+      expect(component).toBeTruthy();
+  });
+
   it('should get a list of all inspection reports', () => {
       expect(component.reports.length).toBe(3);
   });

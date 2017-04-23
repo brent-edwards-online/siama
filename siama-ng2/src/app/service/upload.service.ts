@@ -13,7 +13,6 @@ export class UploadService {
     upload(inspectionNo: string, fileToUpload: any) {
         let input = new FormData();
         input.append("file", fileToUpload);
-
         return this.http.post(this.ENDPOINT_URL + inspectionNo, input);
     }
 

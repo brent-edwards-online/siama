@@ -62,7 +62,7 @@
             <select class="form-control" id="decktype"
                     required
                     [(ngModel)]="inspection.deckType" name="decktype" #decktypecontrol="ngModel">
-              <option *ngFor="let d of decktypes" [value]="d">{{d}}</option>
+              <option *ngFor="let d of decktypes" [value]="d">d</option>
             </select>
 
             <div *ngIf="!decktypecontrol.valid && (decktypecontrol.dirty || decktypecontrol.touched)" class="alert alert-danger">
@@ -73,19 +73,19 @@
 
         <div class="form-group col-lg-4 col-md-12">
           <div *ngIf="isEditing">
-            <label style="position:relative;top: -10px" for="ismaintenancerequired">Maintenance Req:</label>
+            <label style="position:relative; top:-10px" for="ismaintenancerequired">Maintenance Req:</label>
             <ui-switch id="ismaintenancerequired" [(ngModel)]="inspection.isMaintenanceRequired" name="ismaintenancerequired" #maintenancerequiredcontrol="ngModel"></ui-switch>
           </div>
           <div *ngIf="!isEditing">
-            <label style="position:relative;top: -10px" for="ismaintenancerequiredreadonly">Maintenance Req:</label>
-            <ui-switch id="ismaintenancerequiredreadonly" [(ngModel)]="inspection.isMaintenanceRequired" disabled="true" [ngModelOptions]="{standalone:true}"></ui-switch>
+            <label style="position:relative; top:-10px" for="ismaintenancerequiredreadonly">Maintenance Req:</label>
+            <ui-switch id="ismaintenancerequiredreadonly" [(ngModel)]="inspection.isMaintenanceRequired" disabled="true" [ngModelOptions]="{standalone:true}" name="name00" ngDefaultControl ></ui-switch>
           </div>
         </div>
 
         <div class="form-group col-lg-4 col-md-12">
           <div *ngIf="!isEditing">
             <label for="ishighwaybridgereadonly">HighWay Bridge:</label>
-            <input type="checkbox" class="form-control" id="ishighwaybridgereadonly" [(ngModel)]="inspection.isHighwayBridge" onclick="return false" [ngModelOptions]="{standalone:true}">
+            <input type="checkbox" class="form-control" id="ishighwaybridgereadonly" [(ngModel)]="inspection.isHighwayBridge" onclick="return false" [ngModelOptions]="{standalone:true}" name="name01">
           </div>
           <div *ngIf="isEditing">
             <label for="ishighwaybridge">HighWay Bridge:</label>
@@ -122,7 +122,4 @@
 
     </div>
   </form>
-
-
-
 </div>

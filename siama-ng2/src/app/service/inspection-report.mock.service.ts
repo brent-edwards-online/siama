@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs/Rx';
+﻿import { Observable } from 'rxjs/Rx';
 import { Inspection } from '../model/inspection.model';
 import { InspectionReportService } from './inspection-report.service';
 
@@ -23,8 +23,13 @@ export class MockInspectionReportService extends InspectionReportService {
     }
 
     public GetInspectionReportByInspectionNo(inspectionNo: string): Observable<any> {
-        let response = { result: this._data[0] };
-        return Observable.of(response);
+        let found = this._data.find(o => o.inspectionNo == inspectionNo);
+        if (found) {
+            return Observable.of({ result: found });
+        }
+        else {
+            return Observable.of({ result: [] });
+        }
     }
 
     public SaveInspection(report: Inspection): Observable<any> {
