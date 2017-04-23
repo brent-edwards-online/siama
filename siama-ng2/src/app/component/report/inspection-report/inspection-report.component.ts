@@ -1,11 +1,13 @@
-﻿import { Component, OnInit } from '@angular/core';
+﻿import { Component, OnInit, ViewChild } from '@angular/core';
 import { Inspection } from '../../../model/inspection.model';
 import { ActivatedRoute } from '@angular/router';
 import { NgForm, FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Rx';
 import { InspectionReportService } from '../../../service/inspection-report.service';
+import { UploadService } from '../../../service/upload.service';
 import * as moment from 'moment';
-
+import { UiSwitchModule } from 'angular2-ui-switch/src/index';
+import { HeaderComponent } from '../../shared/header/header.component';
 
 @Component({
     selector: 'app-inspection-report',
@@ -13,6 +15,8 @@ import * as moment from 'moment';
     styleUrls: ['./inspection-report.component.css']
 })
 export class InspectionReportComponent implements OnInit {
+    @ViewChild("uploadFile") fileInput;
+
     public inspection: Inspection;
     public inspectionNo: string;
     public isEditing: boolean;
@@ -21,7 +25,7 @@ export class InspectionReportComponent implements OnInit {
     public decktypes: string[] = ["Concrete", "Earth", "Sealed", "Steel", "Wood"];
     public displayDatePicker: boolean;
 
-    constructor(private inspectionReportService: InspectionReportService, private route: ActivatedRoute) {
+    constructor(private inspectionReportService: InspectionReportService, private route: ActivatedRoute, private uploadService: UploadService) {
         this.displayDatePicker = false;
         this.inspection = new Inspection();
     }
@@ -91,4 +95,26 @@ export class InspectionReportComponent implements OnInit {
         
     }
 
+    fileSelected($event) {
+        console.log($event);
+
+        let fi = this.fileInput.nativeElement;
+        if (fi.files && fi.files[0]) {
+            let fileToUpload = fi.files[0];
+            this.uploadService
+                .upload(this.inspectionNo, fileToUpload)
+                .subscribe(
+                (response) => {
+                    if (response.status) {
+                        this.successMessage = "File uploaded successfully";
+                    }
+                    else {
+                        this.errorMessage = "Could not upload file";
+                    }
+                },
+                (error) => {
+                    this.errorMessage = "Could not upload file";
+                });
+        }
+    }
 }

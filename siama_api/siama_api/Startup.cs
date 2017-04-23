@@ -43,6 +43,7 @@
             services.AddTransient<IInspectionReportService, InspectionReportService>();
             services.AddTransient<IInspectionReportRepository, InspectionReportRepository>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
+            services.AddTransient<IUploadService, UploadService>();
 
             // Add framework services.
             services.AddMvc();
