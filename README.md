@@ -31,6 +31,9 @@ POST api/uploadfile/inspectionNo
 
 Body is IFormFile
 
+Files are uploaded to API and then saved to AWS S3 data storage. 
+
+
 # Build Instructions
 
 ## 1:  Clone Repository
