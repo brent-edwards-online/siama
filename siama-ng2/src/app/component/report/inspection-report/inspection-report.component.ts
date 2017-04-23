@@ -8,6 +8,7 @@ import { UploadService } from '../../../service/upload.service';
 import * as moment from 'moment';
 import { UiSwitchModule } from 'angular2-ui-switch/src/index';
 import { HeaderComponent } from '../../shared/header/header.component';
+import { Config } from '../../../service/config';
 
 @Component({
     selector: 'app-inspection-report',
@@ -24,6 +25,7 @@ export class InspectionReportComponent implements OnInit {
     public successMessage: string;
     public decktypes: string[] = ["Concrete", "Earth", "Sealed", "Steel", "Wood"];
     public displayDatePicker: boolean;
+    public umageURL: string;
 
     constructor(private inspectionReportService: InspectionReportService, private route: ActivatedRoute, private uploadService: UploadService) {
         this.displayDatePicker = false;
@@ -106,6 +108,9 @@ export class InspectionReportComponent implements OnInit {
                 .subscribe(
                 (response) => {
                     if (response.status) {
+                        if (Config.USE_AWS_S3 == true) {
+                            this.umageURL = "https://s3-ap-southeast-2.amazonaws.com/siama-images/" + this.inspectionNo + "/" + fileToUpload.name;
+                        }
                         this.successMessage = "File uploaded successfully";
                     }
                     else {

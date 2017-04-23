@@ -99,6 +99,9 @@
           <h3>Upload an image</h3>
           <input type="file" class="form-control" id="imageSelector" name="imageSelector" #uploadFile (change)="fileSelected($event)" accept=".jpg,.png" [readonly]="!isEditing">
         </div>
+        <div *ngIf="umageURL" style="margin-top: 5px;">
+          <img src="{{this.umageURL}}" width="100" />
+        </div>
       </div>
 
       <div class="row">

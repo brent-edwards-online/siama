@@ -6,7 +6,7 @@ import { Config } from './config';
 
 @Injectable()
 export class UploadService {
-    private readonly ENDPOINT_URL: string = Config.BASE_URL + "uploadfile/";
+    private readonly ENDPOINT_URL: string = Config.PROD_BASE_URL + "uploadfile/";
 
     constructor(private http: Http) { }
 

@@ -22,7 +22,8 @@
                 {
                     BucketName = "siama-images",
                     Key = inspectionNo + "/" + file.FileName,
-                    InputStream = file.OpenReadStream()
+                    InputStream = file.OpenReadStream(),
+                    CannedACL = S3CannedACL.PublicReadWrite
                 };
 
                 var request = fileUploadClient.PutObjectAsync(uploadRequest);

@@ -10,7 +10,7 @@ import { Config } from './config';
 export class InspectionReportService {
     
     // Online Api endpoint
-    private readonly ENDPOINT_URL: string = Config.BASE_URL + "report/";
+    private readonly ENDPOINT_URL: string = Config.PROD_BASE_URL + "report/";
 
     constructor(private http: Http) { }
 
