@@ -98,8 +98,6 @@ export class InspectionReportComponent implements OnInit {
     }
 
     fileSelected($event) {
-        console.log($event);
-
         let fi = this.fileInput.nativeElement;
         if (fi.files && fi.files[0]) {
             let fileToUpload = fi.files[0];

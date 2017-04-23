@@ -13,3 +13,17 @@ export class MockUploadService extends UploadService {
     }
 
 }
+
+export class MockFailedUploadService extends UploadService {
+
+    constructor() {
+        super(null);
+    }
+
+    upload(inspectionNo: string, fileToUpload: any): Observable<any> {
+        let response = { noresult: "Failed" };
+        return Observable.of(response);
+    }
+
+}
+

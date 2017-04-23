@@ -1,4 +1,4 @@
-﻿import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+﻿import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
 import { InspectionReportComponent } from './inspection-report.component';
 import { SideBarComponent } from '../../shared/side-bar/side-bar.component';
 import { HeaderComponent } from '../../shared/header/header.component';
@@ -35,8 +35,6 @@ describe('InspectionReportComponent', () => {
     .compileComponents();
   }));
 
-  
-
   beforeEach(() => {
     fixture = TestBed.createComponent(InspectionReportComponent);
     component = fixture.componentInstance;
@@ -59,4 +57,14 @@ describe('InspectionReportComponent', () => {
       expect(component.inspection.isHighwayBridge).toBe(true);
       expect(component.inspection.isMaintenanceRequired).toBe(true);
   });
+
+  it('should submit an inspection report', () => {
+      component.onSubmit();
+      expect(component.errorMessage).toBe("");
+      expect(component.successMessage).toBe("Report saved");
+      expect(component.displayDatePicker).toBeFalsy();
+      expect(component.isEditing).toBeFalsy();
+  });
+
+
 });
