@@ -78,7 +78,7 @@
           </div>
           <div *ngIf="!isEditing">
             <label style="position:relative;top: -10px" for="ismaintenancerequiredreadonly">Maintenance Req:</label>
-            <ui-switch id="ismaintenancerequiredreadonly" checked="inspection.isMaintenanceRequired" disabled="true"></ui-switch>
+            <ui-switch id="ismaintenancerequiredreadonly" [(ngModel)]="inspection.isMaintenanceRequired" disabled="true" [ngModelOptions]="{standalone:true}"></ui-switch>
           </div>
         </div>
 
@@ -98,12 +98,11 @@
       <div class="row" *ngIf="isEditing" style="margin-bottom: 5px">
         <h3>Upload an image</h3>
         <input type="file" class="form-control" id="imageSelector" name="imageSelector" #uploadFile (change)="fileSelected($event)" accept=".jpg,.png" [readonly]="!isEditing">
+        <div *ngIf="umageURL" style="margin-top: 5px;">
+          <img src="{{this.umageURL}}" width="100" />
+        </div>
       </div>
-      <div *ngIf="umageURL" style="margin-top: 5px;">
-        <img src="{{this.umageURL}}" width="100" />
-      </div>
-
-
+      
       <div class="row">
         <div class="col-lg-push-8 col-lg-4 col-md-push-0 col-md-12" [hidden]="!isEditing" style="padding-left:auto;padding-right:auto">
           <button class="btn btn-primary button-row" [disabled]="true">Clear</button>

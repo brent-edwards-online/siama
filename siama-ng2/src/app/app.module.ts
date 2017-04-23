@@ -7,7 +7,6 @@ import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { DatepickerModule } from 'ngx-bootstrap/datepicker';
 import { routes } from './app.router';
 import { RouterModule } from '@angular/router'; 
-import { FileSelectDirective, FileDropDirective } from 'ng2-file-upload';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './component/shared/header/header.component';
@@ -32,8 +31,7 @@ import { UploadService } from './service/upload.service';
     NetworkComponent,
     SettingsComponent,
     BridgeHealthComponent,
-    InspectionReportComponent,
-    FileSelectDirective
+    InspectionReportComponent
   ],
   imports: [
     BrowserModule,
