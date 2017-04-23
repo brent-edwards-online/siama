@@ -11,7 +11,7 @@
 
     <div class="container">
       <div class="row">
-        <div class="form-group col-lg-4 col-md-6 col-sm-12">
+        <div class="form-group col-lg-4 col-md-12">
           <!--Just make this read only -->
           <label for="inspectionno">Inspection No:</label>
           <input type="text" class="form-control" id="inspectionno" [(ngModel)]="inspection.inspectionNo" name="inspectionno" #inspectionnocontrol="ngModel" [readonly]="true"
@@ -19,7 +19,7 @@
                  pattern="^[A-Z0-9]{6,6}$">
         </div>
 
-        <div class="form-group col-lg-4 col-md-6 col-sm-12">
+        <div class="form-group col-lg-4 col-md-12">
           <label for="inspectiondate">Inspection Date:</label>
 
           <div class="input-group date">
@@ -38,7 +38,7 @@
           </div>
         </div>
 
-        <div class="form-group col-lg-4 col-md-6 col-sm-12">
+        <div class="form-group col-lg-4 col-md-12">
           <label for="structureno">Structure No:</label>
           <input type="text" class="form-control" id="structureno" [(ngModel)]="inspection.structureNo" name="structureno" #snc="ngModel" required pattern="^[0-9]{6,6}$" [readonly]="!isEditing">
           <div *ngIf="!snc.valid && (!snc.pristine || snc.touched)" class="alert alert-danger">
@@ -51,7 +51,7 @@
 
     <div class="container">
       <div class="row">
-        <div class="form-group col-lg-4 col-md-6 col-sm-12">
+        <div class="form-group col-lg-4 col-md-12">
 
           <div *ngIf="!isEditing">
             <label for="decktypereadonly">Deck Type:</label>
@@ -71,7 +71,7 @@
           </div>
         </div>
 
-        <div class="form-group col-lg-4 col-md-6 col-sm-12">
+        <div class="form-group col-lg-4 col-md-12">
           <div *ngIf="isEditing">
             <label style="position:relative;top: -10px" for="ismaintenancerequired">Maintenance Req:</label>
             <ui-switch id="ismaintenancerequired" [(ngModel)]="inspection.isMaintenanceRequired" name="ismaintenancerequired" #maintenancerequiredcontrol="ngModel"></ui-switch>
@@ -82,7 +82,7 @@
           </div>
         </div>
 
-        <div class="form-group col-lg-4 col-md-6 col-sm-12">
+        <div class="form-group col-lg-4 col-md-12">
           <div *ngIf="!isEditing">
             <label for="ishighwaybridgereadonly">HighWay Bridge:</label>
             <input type="checkbox" class="form-control" id="ishighwaybridgereadonly" [(ngModel)]="inspection.isHighwayBridge" onclick="return false" [ngModelOptions]="{standalone:true}">

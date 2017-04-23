@@ -13,4 +13,5 @@
   margin-left: 350px;
   height: 100%;
   padding: 20px;
+  width: calc(100%-350);
 }
