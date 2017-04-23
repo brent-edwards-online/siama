@@ -9,10 +9,13 @@ Api : http://siama-api.brentedwardsonline.com/
 Endpoints:
 
 GET api/report/{inspectionNo}
+
 Gets a list or single inspection report
 
 PUT api/report/
+
 Updates an existing inspection report
+
 Body is an inspection report Json object
 
 {	
@@ -25,6 +28,7 @@ Body is an inspection report Json object
 }
 
 POST api/uploadfile/inspectionNo
+
 Body is IFormFile
 
 # Build Instructions
@@ -54,9 +58,7 @@ You may need to edit connection string in appsettings.json
 ```
 "SiamaLocal": "Server=(localdb)\\mssqllocaldb;Database=Siama;Trusted_Connection=True;MultipleActiveResultSets=true"
 ```
-To create the database and seed with dummy date go to project folder 
-
-Run: 
+To create the database and seed with dummy data go to project folder and run 
 ```
 dotnet ef database update
 ```
@@ -69,14 +71,15 @@ Or just open Visual Studio solution and debug the solution
 
 ## 3 Build Angular2 Web Site:
 
-### 3.1 Edit InspectionReportService.ts to choose if access a local api endpoint or just use the AWS online version
+### 3.1 Edit ~/src/app/service/config.ts to choose if access a local api endpoint or just use the AWS online version
 ```
-// Online Api endpoint
+// to use online Api endpoint
   
-private readonly BASE_URL: string = "http://siama-api.brentedwardsonline.com/api/report/";
+public static readonly PROD_BASE_URL = Config.ONLINE_BASE_URL;
 
-// Local api enpoint if required
-/*private readonly BASE_URL: string = "http://localhost:5000/api/report/";*/
+// to use local api endpoint instead
+
+public static readonly PROD_BASE_URL = Config.DEV_BASE_URL;
 ```
 ### 3.2 Install NPM packages  
 
