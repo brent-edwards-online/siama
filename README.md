@@ -24,6 +24,9 @@ Body is an inspection report Json object
 	"structureNo":"999999"
 }
 
+POST api/uploadfile/inspectionNo
+Body is IFormFile
+
 # Build Instructions
 
 ## 1:  Clone Repository
